@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {FormattedMessage} from "react-intl";
 
 const Footer = () => {
     const [count, setCount] = useState(0);
@@ -8,10 +9,11 @@ const Footer = () => {
 
     return (
         <div className="container mt">
-            {/* Footer content here */}
             <p>Please click the button below</p>
             <button onClick={onChange}>click here</button>
-            <p>You clicked {count} times</p>
+            <p>
+                <FormattedMessage id="click_count" values={{ count: count }} />
+            </p>
         </div>
     );
 };

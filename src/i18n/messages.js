@@ -11,6 +11,7 @@ export const messages = {
         // menu
         about_project: "About the project",
         contact_us: "Contact us",
+        click_count: "You clicked {count, plural, one {# time} other {# times}}",
     },
     [LOCALES.PORTUGUESE]: {
         learn_to: "Olá, vamos aprender como usar React-Intl",
@@ -19,6 +20,7 @@ export const messages = {
         start_today: "Começo Hoje: {d, date}",
         about_project: "Sobre o projeto",
         contact_us: "Contate-nos",
+        click_count: "Você clicou {count, plural, one {# vez} other {# vezes}}"
     },
     [LOCALES.SPANISH]: {
         learn_to: "Hola, aprendamos a usar React-Intl",
@@ -27,6 +29,7 @@ export const messages = {
         start_today: "Comienza hoy: {d, date}",
         about_project: "Sobre el proyecto",
         contact_us: "Contacta con nosotros",
+        click_count: "Hiciste clic en {count, plural, one {# vez} other {# veces}}",
     },
 
 }

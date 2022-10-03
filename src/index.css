@@ -33,3 +33,60 @@ header {
   padding-right: 20px;
   padding-left: 20px;
 }
+
+.header_content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 60px;
+  width: 100%;
+}
+
+.brand {
+  font-size: 30px;
+  line-height: 58px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+
+nav ul li a {
+  padding: 22px 1em;
+  color: #383f4d;
+  text-decoration: none;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.hero {
+  padding-top: 184px;
+}
+
+.hero h1 {
+  font-size: 45px;
+  line-height: 58px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 20px;
+  line-height: 36px;
+}
+
+
+.mt {
+  margin-top: 20px;
+}
+
+.switcher select {
+  width: 99px;
+  height: 30px;
+}
