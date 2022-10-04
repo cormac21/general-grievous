@@ -1,17 +1,18 @@
 import {FormattedMessage} from "react-intl";
 import {LOCALES} from "../i18n/locales";
+import {Link} from "react-router-dom";
 
 const Header = ( props ) => {
     const menu = [
         {
-            key: "about_project",
-            title: "About the project",
-            path: "#",
+            key: "orders",
+            title: "Orders",
+            path: "/orders",
         },
         {
-            key: "contact_us",
-            title: "Contact us",
-            path: "#",
+            key: "my_account",
+            title: "MyAccount",
+            path: "/my_account",
         },
     ];
 
@@ -24,21 +25,25 @@ const Header = ( props ) => {
     return (
       <header>
         <div className="container header_content">
-          <div className="brand">Timão e Pumba</div>
+          <div className="brand">
+            <Link to="/" >
+              Timão e Pumba
+            </Link>
+          </div>
             <nav>
               <ul>
                 {menu.map(({ title, path, key }) => (
                   <li key={title}>
-                    <a href={path}>
+                    <Link to={path} >
                       <FormattedMessage id={key} />
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
             </nav>
             <div className="spacer"></div>
             <div className="switcher">
-              Languages{" "}
+              <FormattedMessage id="languages" />
               <select onChange={props.handleChange} value={props.currentLocale}>
                 {languages.map(({ name, code }) => (
                     <option key={code} value={code}>

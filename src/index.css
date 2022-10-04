@@ -55,9 +55,13 @@ nav ul {
   list-style: none;
 }
 
-
 nav ul li a {
   padding: 22px 1em;
+  color: #383f4d;
+  text-decoration: none;
+}
+
+.brand a {
   color: #383f4d;
   text-decoration: none;
 }
@@ -89,4 +93,8 @@ nav ul li a {
 .switcher select {
   width: 99px;
   height: 30px;
+}
+
+.footer h3 {
+  text-align: center;
 }

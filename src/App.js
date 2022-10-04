@@ -6,6 +6,13 @@ import { messages } from "./i18n/messages";
 import Footer from './components/Footer'
 import Content from "./components/Content";
 import Header from "./components/Header";
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+import Orders from "./components/orders";
+import MyAccount from "./components/my_account";
 
 const App = () => {
 
@@ -28,9 +35,15 @@ const App = () => {
         defaultLocale={LOCALES.ENGLISH}
     >
       <div>
-        <Header currentLocale={currentLocale} handleChange={handleChange}/>
-        <Content/>
-        <Footer/>
+        <BrowserRouter>
+          <Header currentLocale={currentLocale} handleChange={handleChange}/>
+          <Routes >
+            <Route path="/" element={<Content />}></Route>
+            <Route path="/orders" element={<Orders />}></Route>
+            <Route path="/my_account" element={<MyAccount />} ></Route>
+          </Routes>
+          <Footer/>
+        </BrowserRouter>
       </div>
     </IntlProvider>
   );
