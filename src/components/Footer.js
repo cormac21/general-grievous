@@ -1,11 +1,19 @@
 import {FormattedMessage} from "react-intl";
+import {Container, Typography} from "@mui/material";
+import LanguageSelect from "./LanguageSelect";
 
-const Footer = () => {
+const Footer = (props) => {
 
     return (
-      <div className="container mt footer">
-        <h3><FormattedMessage id="footer_credits"/></h3>
-      </div>
+      <Container className="mt footer">
+        <Typography variant="h6" textAlign="center" >
+          <FormattedMessage id="footer_credits" />
+        </Typography>
+        <Typography variant="h6" textAlign="center" >
+            <FormattedMessage id="languages" />
+        </Typography>
+        <LanguageSelect currentLocale={props.currentLocale} handleChange={props.handleChange} />
+      </Container>
     );
 };
 

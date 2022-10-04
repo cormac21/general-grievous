@@ -15,17 +15,14 @@ body {
   sans-serif;
 }
 
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
   monospace;
 }
 
-
 header {
   width: 100%;
 }
-
 
 .container {
   max-width: 1182px;
@@ -62,7 +59,7 @@ nav ul li a {
 }
 
 .brand a {
-  color: #383f4d;
+  color: #000000;
   text-decoration: none;
 }
 
@@ -85,7 +82,6 @@ nav ul li a {
   line-height: 36px;
 }
 
-
 .mt {
   margin-top: 20px;
 }
@@ -97,4 +93,8 @@ nav ul li a {
 
 .footer h3 {
   text-align: center;
+}
+
+.div title {
+  margin-top: 72px;
 }

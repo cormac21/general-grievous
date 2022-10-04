@@ -2,6 +2,7 @@ import { LOCALES } from "./locales";
 
 export const messages = {
     [LOCALES.ENGLISH]: {
+        project_name: "Timon and Pumbaa",
         learn_to: "Hello, let's learn how to use React-Intl",
         price_display: "How {n, number, ::currency/USD} is displayed in your selected language",
         number_display: "This is how {n, number} is formatted in the selected locale",
@@ -13,6 +14,7 @@ export const messages = {
         footer_credits: "Developed by: Lucas D. Gaio",
     },
     [LOCALES.PORTUGUESE]: {
+        project_name: "Timão e Pumba",
         learn_to: "Olá, vamos aprender como usar React-Intl",
         price_display: "Como {n, number, ::currency/BRL} é mostrado na sua linguagem selecionada",
         number_display: "Aqui é como {n, number} é formatado no seu locale selecionado",
@@ -24,6 +26,7 @@ export const messages = {
         footer_credits: "Desenvolvido por: Lucas D. Gaio",
     },
     [LOCALES.SPANISH]: {
+        project_name: "Timon y Pumba",
         learn_to: "Hola, aprendamos a usar React-Intl",
         price_display: "Cómo se muestra {n, number, ::currency/EUR} en el idioma seleccionado",
         number_display: "Así es como se formatea {n, number} en la configuración regional seleccionada",
