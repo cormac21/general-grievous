@@ -5,7 +5,7 @@ import { LOCALES } from "./i18n/locales";
 import { messages } from "./i18n/messages";
 import Footer from './components/Footer'
 import Content from "./components/Content";
-import ApplicationBar from "./components/ApplicationBar";
+import ApplicationBar from "./components/top/ApplicationBar";
 import {
   BrowserRouter,
   Routes,
@@ -14,6 +14,7 @@ import {
 import Orders from "./components/orders";
 import MyAccount from "./components/my_account";
 import {createTheme, ThemeProvider} from "@mui/material";
+import ThemeOptions from "./theme/theme";
 
 const App = () => {
 
@@ -29,20 +30,7 @@ const App = () => {
     return savedLocale || LOCALES.ENGLISH;
   }
 
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: '#ffe082',
-        light: '#ffffb3',
-        dark: '#caae53',
-      },
-      secondary: {
-        main: '#aed581',
-        light: '#e1ffb1',
-        dark: '#7da453',
-      },
-    },
-  });
+  const theme = createTheme(ThemeOptions);
 
   return (
     <IntlProvider
@@ -51,7 +39,6 @@ const App = () => {
         defaultLocale={LOCALES.ENGLISH}
     >
       <ThemeProvider theme={theme}>
-        <div>
           <BrowserRouter>
             <ApplicationBar />
             <Routes >
@@ -61,7 +48,6 @@ const App = () => {
             </Routes>
             <Footer currentLocale={currentLocale} handleChange={handleLocaleChange} />
           </BrowserRouter>
-        </div>
       </ThemeProvider>
     </IntlProvider>
   );
