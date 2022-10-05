@@ -9,9 +9,6 @@ const Footer = (props) => {
         <Typography variant="h6" textAlign="center" >
           <FormattedMessage id="footer_credits" />
         </Typography>
-        <Typography variant="h6" textAlign="center" >
-            <FormattedMessage id="languages" />
-        </Typography>
         <LanguageSelect currentLocale={props.currentLocale} handleChange={props.handleChange} />
       </Container>
     );

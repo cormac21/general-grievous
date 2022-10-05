@@ -1,4 +1,4 @@
-import {Container, useMediaQuery, useTheme} from "@mui/material";
+import { useMediaQuery, useTheme} from "@mui/material";
 import MobileAppBar from "./MobileAppBar";
 import LargeAppBar from "./LargeAppBar";
 
@@ -19,15 +19,13 @@ const ApplicationBar = (props) => {
     const isMobileViewport = useMediaQuery(theme.breakpoints.down('md'));
 
     return (
-      <Container sx={{
-          maxWidth: 1182
-      }}>
+        <>
         { isMobileViewport ?
           <MobileAppBar />
         :
           <LargeAppBar />
         }
-      </Container>
+        </>
     );
 };
 
