@@ -66,7 +66,7 @@ const MobileAppBar = (props) => {
 
             <Typography variant="h6" noWrap component="div" className="brand" >
               <Link to="/">
-                Mobile App Bar
+                <FormattedMessage id="project_name" />
               </Link>
             </Typography>
             <Box flex='1'>
