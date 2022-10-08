@@ -1,8 +1,12 @@
-import {AppBar, Box, Button, Container, Menu, Toolbar, Typography} from "@mui/material";
+import {AppBar, Box, Button, Container, Menu, Toolbar, Typography, useTheme} from "@mui/material";
 import {Link} from "react-router-dom";
 import {FormattedMessage} from "react-intl";
+import * as PropTypes from "prop-types";
+import NoUnderlineLink from "../util/NoUnderlineLink";
 
 const LargeAppBar = () => {
+
+  const theme = useTheme();
 
     return (
       <Container sx={{
@@ -11,22 +15,22 @@ const LargeAppBar = () => {
         <AppBar position="static" color="primary">
           <Container maxWidth="xl">
             <Toolbar disableGutters>
-              <Typography variant="h6" noWrap component="div" className="brand">
-                <Link to="/">
+              <NoUnderlineLink to="/" >
+                <Typography variant="h6" noWrap className="brand" color="common.white" >
                   <FormattedMessage id="project_name"/>
-                </Link>
-              </Typography>
+                </Typography>
+              </NoUnderlineLink>
               <Box sx={{ flexGrow: 1, display: { xs : 'none', md: 'flex'}, ml: 3 }}>
-                <Button >
-                  <Link to="/orders" style={{ textDecoration: 'none', color: '#000'  }} >
+                <NoUnderlineLink to="/orders" >
+                  <Button sx={{ color: 'white'}} >
                     <FormattedMessage id="orders" />
-                  </Link>
-                </Button>
-                <Button >
-                  <Link to="/my_account" style={{ textDecoration: 'none', color: '#000'  }}>
+                  </Button>
+                </NoUnderlineLink>
+                <NoUnderlineLink to="/my_account" >
+                  <Button sx={{ color: 'white'}}>
                     <FormattedMessage id="my_account" />
-                  </Link>
-                </Button>
+                  </Button>
+                </NoUnderlineLink>
               </Box>
             </Toolbar>
           </Container>

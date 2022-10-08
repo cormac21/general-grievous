@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu"
 import {FormattedMessage} from "react-intl";
+import NoUnderlineLink from "../util/NoUnderlineLink";
 
 
 const MobileAppBar = (props) => {
@@ -63,14 +64,12 @@ const MobileAppBar = (props) => {
                 </MenuItem>
               </Link>
             </Menu>
-
-            <Typography variant="h6" noWrap component="div" className="brand" >
-              <Link to="/">
+            <Typography variant="h6" noWrap className="brand" >
+              <NoUnderlineLink to="/" style={{ color: '#fff' }}>
                 <FormattedMessage id="project_name" />
-              </Link>
+              </NoUnderlineLink>
             </Typography>
             <Box flex='1'>
-
             </Box>
           </Toolbar>
         </Container>

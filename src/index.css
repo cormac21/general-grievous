@@ -47,24 +47,8 @@ header {
   margin-right: 10px;
 }
 
-nav ul {
-  display: flex;
-  list-style: none;
-}
-
-nav ul li a {
-  padding: 22px 1em;
-  color: #383f4d;
-  text-decoration: none;
-}
-
 .brand a {
-  color: #000000;
   text-decoration: none;
-}
-
-.spacer {
-  flex: 1;
 }
 
 .hero {

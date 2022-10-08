@@ -13,7 +13,7 @@ import {
 } from "react-router-dom";
 import Orders from "./components/orders";
 import MyAccount from "./components/my_account";
-import {createTheme, ThemeProvider} from "@mui/material";
+import {Box, createTheme, ThemeProvider} from "@mui/material";
 import ThemeOptions from "./theme/theme";
 
 const App = () => {
@@ -40,13 +40,15 @@ const App = () => {
     >
       <ThemeProvider theme={theme}>
           <BrowserRouter>
-            <ApplicationBar />
-            <Routes >
-              <Route path="/" element={<Content />}></Route>
-              <Route path="/orders" element={<Orders />}></Route>
-              <Route path="/my_account" element={<MyAccount />} ></Route>
-            </Routes>
-            <Footer currentLocale={currentLocale} handleChange={handleLocaleChange} />
+            <Box >
+              <ApplicationBar />
+              <Routes >
+                <Route path="/" element={<Content />}></Route>
+                <Route path="/orders" element={<Orders />}></Route>
+                <Route path="/my_account" element={<MyAccount />} ></Route>
+              </Routes>
+              <Footer currentLocale={currentLocale} handleChange={handleLocaleChange} />
+            </Box>
           </BrowserRouter>
       </ThemeProvider>
     </IntlProvider>
