@@ -1,31 +1,34 @@
 import {useState} from "react";
-import {FormattedMessage} from "react-intl";
-import {Box, Button, Container, Dialog, Typography} from "@mui/material";
+import {
+    useMediaQuery,
+    useTheme
+} from "@mui/material";
+import MobileOrders from "./MobileOrders";
+import DesktopOrders from "./DesktopOrders";
 
-export default function Orders() {
+function Orders() {
 
-    const [openNewOrderDialog, setOpenNewOrderDialog] = useState(false);
+    const theme = useTheme();
+    const isMobileViewport = useMediaQuery(theme.breakpoints.down('md'));
+    const [shouldShowMoreInfo, setShouldShowMoreInfo] = useState(false);
 
-    const handleOpenNewOrderDialog = () => {
-        setOpenNewOrderDialog(true);
-    }
-
-    const handleCloseNewOrderDialog = () => {
-        setOpenNewOrderDialog(false);
+    const showMoreInfo = () => {
+        if(shouldShowMoreInfo) {
+            setShouldShowMoreInfo(false)
+        } else {
+            setShouldShowMoreInfo(true);
+        }
     }
 
     return (
-      <Box className="container title" mt={6}>
-        <Typography variant="h3">
-          <FormattedMessage id="orders" />
-        </Typography>
-        <Button variant="contained" onClick={handleOpenNewOrderDialog}>
-          <FormattedMessage id="new_order_button" />
-        </Button>
-          <Dialog open={openNewOrderDialog} onClose={handleCloseNewOrderDialog}>
-
-          </Dialog>
-      </Box>
+        <>
+          { isMobileViewport ?
+              <MobileOrders showMoreInfo={showMoreInfo} shouldShowMoreInfo={shouldShowMoreInfo}/>
+            : <DesktopOrders showMoreInfo={showMoreInfo} shouldShowMoreInfo={shouldShowMoreInfo} />
+          }
+        </>
     );
 
 }
+
+export default Orders;

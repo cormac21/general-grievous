@@ -1,14 +1,10 @@
-import {AppBar, Box, Button, Container, Menu, Toolbar, Typography, useTheme} from "@mui/material";
-import {Link} from "react-router-dom";
+import {AppBar, Box, Button, Container, Toolbar, Typography, useTheme} from "@mui/material";
 import {FormattedMessage} from "react-intl";
-import * as PropTypes from "prop-types";
 import NoUnderlineLink from "../util/NoUnderlineLink";
 
 const LargeAppBar = () => {
 
-  const theme = useTheme();
-
-    return (
+  return (
       <Container sx={{
           maxWidth: 1132
       }} >
@@ -38,6 +34,5 @@ const LargeAppBar = () => {
       </Container>
     );
 }
-
 
 export default LargeAppBar;

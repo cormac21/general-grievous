@@ -24,6 +24,9 @@ export const messages = {
         click_count: "Você clicou {count, plural, one {# vez} other {# vezes}}",
         languages: "Linguagens ",
         footer_credits: "Desenvolvido por: Lucas D. Gaio",
+        orders_more_info: "Nesta página, podes criar novas ordens de compra e venda de ações.",
+        add_new_order: "Nova Ordem",
+        submit: "Submeter"
     },
     [LOCALES.SPANISH]: {
         project_name: "Timon y Pumba",
