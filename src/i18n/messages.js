@@ -26,7 +26,12 @@ export const messages = {
         footer_credits: "Desenvolvido por: Lucas D. Gaio",
         orders_more_info: "Nesta página, podes criar novas ordens de compra e venda de ações.",
         add_new_order: "Nova Ordem",
-        submit: "Submeter"
+        submit: "Submeter",
+        ticker: "Ticker",
+        quantity: "Quantidade",
+        order_type: "Tipo",
+        unit_price: "Preço unitário",
+        total_price: "Preço total"
     },
     [LOCALES.SPANISH]: {
         project_name: "Timon y Pumba",

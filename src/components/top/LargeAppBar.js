@@ -1,4 +1,4 @@
-import {AppBar, Box, Button, Container, Toolbar, Typography, useTheme} from "@mui/material";
+import {AppBar, Box, Button, Container, Toolbar, Typography} from "@mui/material";
 import {FormattedMessage} from "react-intl";
 import NoUnderlineLink from "../util/NoUnderlineLink";
 

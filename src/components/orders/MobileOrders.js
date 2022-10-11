@@ -1,4 +1,4 @@
-import {Box, Card, Fab, Grid, IconButton, styled, Typography, useTheme} from "@mui/material";
+import {Box, Card, Grid, IconButton, Typography} from "@mui/material";
 import {FormattedMessage} from "react-intl";
 import InfoIcon from "@mui/icons-material/Info";
 import AddIcon from "@mui/icons-material/Add";
@@ -8,7 +8,6 @@ import StyledFab from "../util/StyledFab";
 
 const MobileOrders = (props) => {
 
-    const theme = useTheme();
     const [openNewOrderDialog, setOpenNewOrderDialog] = useState(false);
 
     const handleFabClick = () => {
