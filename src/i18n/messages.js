@@ -31,7 +31,9 @@ export const messages = {
         quantity: "Quantidade",
         order_type: "Tipo",
         unit_price: "Preço unitário",
-        total_price: "Preço total"
+        total_price: "Preço total",
+        buy_button: "Compra",
+        sell_button: "Venda"
     },
     [LOCALES.SPANISH]: {
         project_name: "Timon y Pumba",
