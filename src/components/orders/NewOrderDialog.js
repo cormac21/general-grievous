@@ -7,12 +7,13 @@ import {
     Grid, TextField, Typography,
 } from "@mui/material";
 import {FormattedMessage} from "react-intl";
-import {Form, useForm} from "../form/useForm";
+import {Form, useForm} from "../../form/useForm";
 import {useState} from "react";
 
 const initialFormValues = {
     ticker: '',
     quantity: 0,
+    type: 'c',
 }
 
 const NewOrderDialog = (props) => {
@@ -46,8 +47,6 @@ const NewOrderDialog = (props) => {
     function handleSubmit() {
 
     }
-
-
 
     return (
       <Dialog open={props.open} onClose={props.onClose}>
@@ -92,7 +91,7 @@ const NewOrderDialog = (props) => {
               <Grid container xs={12} mt={1}>
                 <Grid item xs={4}>
                   <Typography >
-                    Valor total: { (values.unitPrice * values.quantity) }
+                    Valor total: { ((values.unitPrice * values.quantity) * 100 + Number.EPSILON ) /100 }
                   </Typography>
                 </Grid>
               </Grid>

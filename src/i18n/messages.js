@@ -3,7 +3,7 @@ import { LOCALES } from "./locales";
 export const messages = {
     [LOCALES.ENGLISH]: {
         project_name: "Timon and Pumbaa",
-        learn_to: "Hello, let's learn how to use React-Intl",
+        landing_page_greeting: "Hello, let's learn how to use React-Intl",
         price_display: "How {n, number, ::currency/USD} is displayed in your selected language",
         number_display: "This is how {n, number} is formatted in the selected locale",
         start_today: "Start Today: {d, date}",
@@ -15,7 +15,7 @@ export const messages = {
     },
     [LOCALES.PORTUGUESE]: {
         project_name: "Timão e Pumba",
-        learn_to: "Olá, vamos aprender como usar React-Intl",
+        landing_page_greeting: "Bem-vindo ao Timão e Pumba!",
         price_display: "Como {n, number, ::currency/BRL} é mostrado na sua linguagem selecionada",
         number_display: "Aqui é como {n, number} é formatado no seu locale selecionado",
         start_today: "Começo Hoje: {d, date}",
@@ -33,11 +33,15 @@ export const messages = {
         unit_price: "Preço unitário",
         total_price: "Preço total",
         buy_button: "Compra",
-        sell_button: "Venda"
+        sell_button: "Venda",
+        signup: "Cadastro",
+        already_signedup: "Já se cadastrou? Faça seu login aqui",
+        login: "Login",
+        no_account_yet: "Ainda não tem uma conta? Faça seu cadastro aqui"
     },
     [LOCALES.SPANISH]: {
         project_name: "Timon y Pumba",
-        learn_to: "Hola, aprendamos a usar React-Intl",
+        landing_page_greeting: "Hola, aprendamos a usar React-Intl",
         price_display: "Cómo se muestra {n, number, ::currency/EUR} en el idioma seleccionado",
         number_display: "Así es como se formatea {n, number} en la configuración regional seleccionada",
         start_today: "Comienza hoy: {d, date}",

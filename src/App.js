@@ -15,6 +15,9 @@ import Orders from "./components/orders";
 import MyAccount from "./components/my_account";
 import {Box, createTheme, ThemeProvider} from "@mui/material";
 import ThemeOptions from "./theme/theme";
+import {AuthProvider} from "./context/AuthContext";
+import Signup from "./components/signup";
+import Login from "./components/login";
 
 const App = () => {
 
@@ -39,17 +42,21 @@ const App = () => {
         defaultLocale={LOCALES.ENGLISH}
     >
       <ThemeProvider theme={theme}>
+
           <BrowserRouter>
             <Box >
               <ApplicationBar />
               <Routes >
-                <Route path="/" element={<Content />}></Route>
-                <Route path="/orders" element={<Orders />}></Route>
-                <Route path="/my_account" element={<MyAccount />} ></Route>
+                <Route path="/" element={<Content />} />
+                <Route path="/orders" element={<Orders />} />
+                <Route path="/my_account" element={<MyAccount />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/login" element={<Login />} />
               </Routes>
               <Footer currentLocale={currentLocale} handleChange={handleLocaleChange} />
             </Box>
           </BrowserRouter>
+
       </ThemeProvider>
     </IntlProvider>
   );
