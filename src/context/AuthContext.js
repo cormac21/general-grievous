@@ -1,16 +1,21 @@
 import React, {useContext, useState} from 'react';
+import {createNewUser} from "../api/userService";
 
 const AuthContext = React.createContext();
 
 export function useAuth() {
-    return useContext(AuthContext);
+  return useContext(AuthContext);
 }
 
 export function AuthProvider({children}) {
   const [currentUser, setCurrentUser] = useState();
 
-  function signup(email, password) {
-      //logica de criação de usuario
+  function login(email, password) {
+
+  }
+
+  async function signup(email, password) {
+    await createNewUser({email: email, password: password});
   }
 
   const value = {
@@ -19,8 +24,8 @@ export function AuthProvider({children}) {
   }
 
   return (
-    <AuthProvider.Provider >
+    <AuthContext.Provider value={value} >
       {children}
-    </AuthProvider.Provider>
+    </AuthContext.Provider>
   )
 }

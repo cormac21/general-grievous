@@ -16,8 +16,8 @@ import MyAccount from "./components/my_account";
 import {Box, createTheme, ThemeProvider} from "@mui/material";
 import ThemeOptions from "./theme/theme";
 import {AuthProvider} from "./context/AuthContext";
-import Signup from "./components/signup";
-import Login from "./components/login";
+import Signup from "./components/users/signup";
+import Login from "./components/users/login";
 
 const App = () => {
 
@@ -42,7 +42,7 @@ const App = () => {
         defaultLocale={LOCALES.ENGLISH}
     >
       <ThemeProvider theme={theme}>
-
+        <AuthProvider >
           <BrowserRouter>
             <Box >
               <ApplicationBar />
@@ -56,7 +56,7 @@ const App = () => {
               <Footer currentLocale={currentLocale} handleChange={handleLocaleChange} />
             </Box>
           </BrowserRouter>
-
+        </AuthProvider>
       </ThemeProvider>
     </IntlProvider>
   );

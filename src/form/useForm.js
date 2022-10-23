@@ -3,6 +3,7 @@ import React, {useState} from "react";
 export function useForm(initialFormValues) {
 
   const [ values, setValues ] = useState(initialFormValues);
+  const [ errors, setErrors ] = useState({});
 
   const handleInputChange = e => {
     const {name, value} = e.target;
@@ -15,14 +16,19 @@ export function useForm(initialFormValues) {
   return {
     values,
     setValues,
+    errors,
+    setErrors,
     handleInputChange
   }
 }
 
 export function Form(props) {
+
+  const { children, ...other } = props;
+
   return (
-    <form>
-      {props.children}
+    <form {...other}>
+      {children}
     </form>
   )
 }

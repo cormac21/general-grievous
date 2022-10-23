@@ -1,6 +1,6 @@
 import {Button, Container, Grid, TextField, Typography} from "@mui/material";
 import {FormattedMessage} from "react-intl";
-import {Form} from "../../form/useForm";
+import {Form} from "../../../form/useForm";
 import {Link} from "react-router-dom";
 
 export default function Login() {
