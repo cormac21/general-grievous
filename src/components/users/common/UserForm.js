@@ -2,13 +2,16 @@ import {Form, useForm} from "../../../form/useForm";
 import {Box, Grid} from "@mui/material";
 import Input from "../../controls/Input";
 import MuiButton from "../../controls/MuiButton";
+import {useAuth} from "../../../context/AuthContext";
 
 const initialValues = {
   email: '',
   password: ''
 }
 
-export default function UserForm() {
+function UserForm(props) {
+
+  const { buttonMessageId, onSuccess, onError, isLogin = false } = props;
 
   const {
     values,
@@ -17,6 +20,8 @@ export default function UserForm() {
     handleInputChange
   } = useForm(initialValues);
 
+  const { signup, login } = useAuth();
+
   const validate = () => {
     let temp = {};
     temp.email = (/^[^\s@]+@[^\s@]+\.[^\s@]+$/).test(values.email) ? "" : "This doesn't seem right"
@@ -24,19 +29,22 @@ export default function UserForm() {
     setErrors({
       ...temp
     })
-    return Object.values(temp).every( x => x == "");
+    return Object.values(temp).every( x => x === "");
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validate()) {
-      window.alert('test test 123');
+      setErrors({});
+      if (!isLogin) {
+
+      }
     }
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Grid container item spacing={2} mt={1}>
+    <Form >
+      <Grid container item spacing={3} mt={1}>
         <Grid item xs={12}>
           <Input
             fullWidth
@@ -46,7 +54,8 @@ export default function UserForm() {
             autoComplete="email"
             value={values.email}
             onChange={handleInputChange}
-            error={errors.email}
+            error={errors.email !== undefined}
+            errorMessage={errors.email}
           />
         </Grid>
         <Grid item xs={12}>
@@ -59,14 +68,16 @@ export default function UserForm() {
             autoComplete="new-password"
             value={values.password}
             onChange={handleInputChange}
-            error={errors.password}
+            error={errors.password !== undefined}
+            errorMessage={errors.password}
           />
         </Grid>
-        <Grid item xs={12} >
+        <Grid item xs={12} mt={2} >
           <Box textAlign="center">
             <MuiButton
               type="submit"
-              messageId="submit"
+              messageId={buttonMessageId}
+              onClick={handleSubmit}
             />
           </Box>
         </Grid>
@@ -75,3 +86,5 @@ export default function UserForm() {
   )
 
 }
+
+export default UserForm;

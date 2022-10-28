@@ -5,8 +5,10 @@ const userEndpoint = BASE_URL.concat("users");
 
 export async function createNewUser(data) {
   await axios.post(userEndpoint, data).then( response => {
+    console.log('Response:'.concat(response));
     return response;
   }).catch( error => {
+    console.log('Error:'.concat(error));
     return error;
   })
 }

@@ -2,8 +2,7 @@ import {TextField} from "@mui/material";
 
 export default function Input(props) {
 
-  const { name, label, value, onChange, error = null } = props;
-  console.log(error);
+  const { name, label, value, onChange, error = false, errorMessage } = props;
 
   return (
     <TextField
@@ -13,7 +12,7 @@ export default function Input(props) {
       value={value}
       onChange={onChange}
       error={error}
-      helperText={error || ""}
+      helperText={errorMessage || ""}
       {...props}
     />
   )

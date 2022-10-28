@@ -14,8 +14,8 @@ export function AuthProvider({children}) {
 
   }
 
-  async function signup(email, password) {
-    await createNewUser({email: email, password: password});
+  function signup(email, password) {
+    return createNewUser({email: email, password: password});
   }
 
   const value = {

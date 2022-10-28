@@ -6,9 +6,15 @@ import {Link} from "react-router-dom";
 
 export default function Signup() {
 
-  const { signup } = useAuth();
 
 
+  const handleFormSuccess = () => {
+    alert('Deu certo!')
+  }
+
+  const handleFormError = () => {
+    alert('Deu errado')
+  }
 
   return (
     <Container maxWidth="xs" >
@@ -18,8 +24,12 @@ export default function Signup() {
             <FormattedMessage id="signup" />
           </Typography>
         </Grid>
-        <UserForm />
-        <Grid item xs={12}>
+        <UserForm
+          buttonMessageId="submit"
+          onSuccess={handleFormSuccess}
+          onError={handleFormError}
+        />
+        <Grid item xs={12} mt={4}>
           <Link to="/login">
             <Typography textAlign='center'>
               <FormattedMessage id="already_signedup"/>
