@@ -32,12 +32,28 @@ function UserForm(props) {
     return Object.values(temp).every( x => x === "");
   }
 
-  const handleSubmit = async (e) => {
+  function handleLoginSubmit (e) {
     e.preventDefault();
     if (validate()) {
       setErrors({});
-      if (!isLogin) {
+      try {
+        login(values.email, values.password);
+        onSuccess();
+      } catch (err) {
+        onError(err);
+      }
+    }
+  }
 
+  function handleSignupSubmit (e) {
+    e.preventDefault();
+    if (validate()) {
+      setErrors({});
+      try {
+        signup(values.email, values.password);
+        onSuccess();
+      } catch (err) {
+        onError(err);
       }
     }
   }
@@ -51,11 +67,11 @@ function UserForm(props) {
             required
             name="email"
             label="Email"
-            autoComplete="email"
             value={values.email}
+            autoComplete="off"
             onChange={handleInputChange}
             error={errors.email !== undefined}
-            errorMessage={errors.email}
+            helperText={errors.email}
           />
         </Grid>
         <Grid item xs={12}>
@@ -69,16 +85,25 @@ function UserForm(props) {
             value={values.password}
             onChange={handleInputChange}
             error={errors.password !== undefined}
-            errorMessage={errors.password}
+            helperText={errors.password}
           />
         </Grid>
         <Grid item xs={12} mt={2} >
           <Box textAlign="center">
-            <MuiButton
-              type="submit"
-              messageId={buttonMessageId}
-              onClick={handleSubmit}
-            />
+            { isLogin && (
+              <MuiButton
+                type="submit"
+                messageId={buttonMessageId}
+                onClick={handleLoginSubmit}
+              />
+            )}
+            { !isLogin && (
+              <MuiButton
+                type="submit"
+                messageId={buttonMessageId}
+                onClick={handleSignupSubmit}
+              />
+            )}
           </Box>
         </Grid>
       </Grid>

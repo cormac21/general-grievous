@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {createNewUser} from "../api/userService";
+import {createNewUser, authenticate} from "../api/userService";
 
 const AuthContext = React.createContext();
 
@@ -8,10 +8,17 @@ export function useAuth() {
 }
 
 export function AuthProvider({children}) {
-  const [currentUser, setCurrentUser] = useState();
+  let userType = {email: '', authorization_token: ''}
+  const [currentUser, setCurrentUser] = useState(userType);
 
-  function login(email, password) {
-
+  async function login(email, password) {
+    try {
+      const userData = await authenticate({email: email, password: password});
+      setCurrentUser(userData);
+    } catch (err) {
+      const { status } = err.response;
+      console.log('Failed to authenticate user. Error: '.concat(status));
+    }
   }
 
   function signup(email, password) {
@@ -20,7 +27,9 @@ export function AuthProvider({children}) {
 
   const value = {
     currentUser,
-    signup
+    setCurrentUser,
+    signup,
+    login
   }
 
   return (

@@ -17,7 +17,7 @@ export default function Login() {
             <FormattedMessage id="login" />
           </Typography>
         </Grid>
-        <UserForm buttonMessageId="login" onSubmit={handleLoginClick} isLogin/>
+        <UserForm buttonMessageId="login" isLogin/>
         <Grid item xs={12} mt={4}>
           <Link to="/signup">
             <Typography textAlign='center'>
