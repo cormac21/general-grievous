@@ -1,8 +1,11 @@
+import { useState } from 'react'
 import {Form, useForm} from "../../../form/useForm";
-import {Box, Grid} from "@mui/material";
+import {Alert, Box, Collapse, Grid, IconButton} from "@mui/material";
 import Input from "../../controls/Input";
 import MuiButton from "../../controls/MuiButton";
 import {useAuth} from "../../../context/AuthContext";
+import CloseIcon from '@mui/icons-material/Close';
+import {useLocation, useNavigate} from 'react-router-dom';
 
 const initialValues = {
   email: '',
@@ -10,15 +13,18 @@ const initialValues = {
 }
 
 function UserForm(props) {
-
-  const { buttonMessageId, onSuccess, onError, isLogin = false } = props;
-
+  const { buttonMessageId, isLogin = false } = props;
   const {
     values,
     errors,
     setErrors,
     handleInputChange
   } = useForm(initialValues);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
+  let location = useLocation()
+  let navigate = useNavigate()
+  let from = location.state?.from?.pathname || "/";
 
   const { signup, login } = useAuth();
 
@@ -36,12 +42,16 @@ function UserForm(props) {
     e.preventDefault();
     if (validate()) {
       setErrors({});
+      setLoading(true);
       try {
-        login(values.email, values.password);
-        onSuccess();
+        login(values.email, values.password, () => {
+          navigate(from, { replace: true });
+        });
       } catch (err) {
-        onError(err);
+        setErrorMessage('Algo deu errado ao fazer login!')
+        console.log(err)
       }
+      setLoading(false);
     }
   }
 
@@ -49,18 +59,39 @@ function UserForm(props) {
     e.preventDefault();
     if (validate()) {
       setErrors({});
+      setLoading(true)
       try {
         signup(values.email, values.password);
-        onSuccess();
       } catch (err) {
-        onError(err);
+        setErrorMessage('Algo deu errado ao cadastrar este usuário!')
       }
+      setLoading(false);
     }
   }
 
   return (
     <Form >
       <Grid container item spacing={3} mt={1}>
+        { errorMessage && (
+          <Collapse in={errorMessage}>
+            <Grid item xs={12}>
+              <Alert severity="error"
+                action={
+                  <IconButton
+                    aria-label="close"
+                    color="inherit"
+                    size="small"
+                    onClick={() => {
+                      setErrorMessage('');
+                    }}>
+                    <CloseIcon />
+                  </IconButton>
+                }>
+                {errorMessage}
+              </Alert>
+            </Grid>
+          </Collapse>
+        )}
         <Grid item xs={12}>
           <Input
             fullWidth
@@ -70,7 +101,7 @@ function UserForm(props) {
             value={values.email}
             autoComplete="off"
             onChange={handleInputChange}
-            error={errors.email !== undefined}
+            error={Object.prototype.hasOwnProperty.call('email', errors)}
             helperText={errors.email}
           />
         </Grid>
@@ -84,7 +115,7 @@ function UserForm(props) {
             autoComplete="new-password"
             value={values.password}
             onChange={handleInputChange}
-            error={errors.password !== undefined}
+            error={Object.prototype.hasOwnProperty.call('password', errors)}
             helperText={errors.password}
           />
         </Grid>
@@ -95,6 +126,7 @@ function UserForm(props) {
                 type="submit"
                 messageId={buttonMessageId}
                 onClick={handleLoginSubmit}
+                disabled={loading}
               />
             )}
             { !isLogin && (
@@ -102,6 +134,7 @@ function UserForm(props) {
                 type="submit"
                 messageId={buttonMessageId}
                 onClick={handleSignupSubmit}
+                disabled={loading}
               />
             )}
           </Box>

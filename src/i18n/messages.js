@@ -35,6 +35,8 @@ export const messages = {
         buy_button: "Compra",
         sell_button: "Venda",
         signup: "Cadastro",
+        signout: "Sair",
+        signup_yourself: "Cadastre-se",
         already_signedup: "Já se cadastrou? Faça seu login aqui",
         login: "Login",
         no_account_yet: "Ainda não tem uma conta? Faça seu cadastro aqui"

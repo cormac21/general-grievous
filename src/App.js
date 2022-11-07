@@ -18,22 +18,21 @@ import ThemeOptions from "./theme/theme";
 import {AuthProvider} from "./context/AuthContext";
 import Signup from "./components/users/signup";
 import Login from "./components/users/login";
+import RequireAuth from './context/RequireAuth';
 
 const App = () => {
-
   const [currentLocale, setCurrentLocale] = useState(getInitialLocal());
+  const theme = createTheme(ThemeOptions);
 
   const handleLocaleChange = (e) => {
     setCurrentLocale(e.target.value);
     localStorage.setItem("locale", e.target.value);
-  };
+  }
 
   function getInitialLocal() {
     const savedLocale = localStorage.getItem("locale");
     return savedLocale || LOCALES.ENGLISH;
   }
-
-  const theme = createTheme(ThemeOptions);
 
   return (
     <IntlProvider
@@ -48,12 +47,23 @@ const App = () => {
               <ApplicationBar />
               <Routes >
                 <Route path="/" element={<Content />} />
-                <Route path="/orders" element={<Orders />} />
-                <Route path="/my_account" element={<MyAccount />} />
-                <Route path="/signup" element={<Signup />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/orders" element={
+                  <RequireAuth >
+                    <Orders />
+                  </RequireAuth>
+                } />
+                <Route path="/my_account" element={
+                  <RequireAuth >
+                    <MyAccount />
+                  </RequireAuth>
+                } />
               </Routes>
-              <Footer currentLocale={currentLocale} handleChange={handleLocaleChange} />
+              <Footer
+                currentLocale={currentLocale}
+                handleChange={handleLocaleChange}
+              />
             </Box>
           </BrowserRouter>
         </AuthProvider>

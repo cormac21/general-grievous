@@ -2,7 +2,7 @@ import { useMediaQuery, useTheme} from "@mui/material";
 import MobileAppBar from "./MobileAppBar";
 import LargeAppBar from "./LargeAppBar";
 
-const ApplicationBar = (props) => {
+export default function ApplicationBar() {
     const theme = useTheme();
     const isMobileViewport = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -12,5 +12,3 @@ const ApplicationBar = (props) => {
         </>
     );
 };
-
-export default ApplicationBar;
