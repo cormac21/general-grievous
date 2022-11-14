@@ -3,7 +3,7 @@ import {
   Button,
   Container,
   Grid,
-  IconButton, styled,
+  IconButton,
   Toolbar
 } from "@mui/material";
 import ExploreIcon from '@mui/icons-material/Explore';
@@ -15,11 +15,6 @@ import {Link, useNavigate} from "react-router-dom";
 const LargeAppBar = () => {
   const {currentUser, logout} = useAuth();
   let navigate = useNavigate();
-  console.log(currentUser);
-
-  const LastLink = styled(Link)(({theme}) => ({
-    marginLeft: theme.spacing(2)
-  }))
 
   return (
     <Container sx={{
@@ -43,8 +38,7 @@ const LargeAppBar = () => {
                   </IconButton>
                 </NoUnderlineLink>
               </Grid>
-              {
-                currentUser &&
+              {currentUser ?
                 <Grid
                   item
                   container
@@ -77,9 +71,7 @@ const LargeAppBar = () => {
                     </Button>
                   </Grid>
                 </Grid>
-              }
-              {
-                !currentUser &&
+                :
                 <Grid
                   item
                   container
@@ -92,11 +84,6 @@ const LargeAppBar = () => {
                       <FormattedMessage id="login"/>
                     </Button>
                   </Link>
-                  <LastLink to="/signup">
-                    <Button variant='contained'>
-                      <FormattedMessage id="signup_yourself"/>
-                    </Button>
-                  </LastLink>
                 </Grid>
               }
             </Grid>

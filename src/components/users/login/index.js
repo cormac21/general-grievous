@@ -6,8 +6,8 @@ import {Link} from "react-router-dom";
 export default function Login() {
 
   return (
-    <Container maxWidth="xs">
-      <Grid container mt={4} spacing={2}>
+    <Container maxWidth='xs' sx={{ padding: 2}}>
+      <Grid container mt={4}>
         <Grid item xs={12} >
           <Typography component="h1" variant="h5" textAlign='center'>
             <FormattedMessage id="login" />
