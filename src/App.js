@@ -1,8 +1,8 @@
 import './App.css';
 import {useState} from "react";
 import {IntlProvider} from "react-intl";
-import { LOCALES } from "./i18n/locales";
-import { messages } from "./i18n/messages";
+import {LOCALES} from "./i18n/locales";
+import {messages} from "./i18n/messages";
 import Footer from './components/Footer'
 import Content from "./components/Content";
 import ApplicationBar from "./components/top/ApplicationBar";
@@ -36,29 +36,36 @@ const App = () => {
 
   return (
     <IntlProvider
-        messages={messages[currentLocale]}
-        locale={currentLocale}
-        defaultLocale={LOCALES.ENGLISH}
+      messages={messages[currentLocale]}
+      locale={currentLocale}
+      defaultLocale={LOCALES.ENGLISH}
     >
       <ThemeProvider theme={theme}>
-        <AuthProvider >
+        <AuthProvider>
           <BrowserRouter>
-            <Box >
-              <ApplicationBar />
-              <Routes >
-                <Route path="/" element={<Content />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
+            <Box>
+              <ApplicationBar/>
+              <Routes>
+                <Route path="/login" element={<Login/>}/>
+                <Route path="/signup" element={<Signup/>}/>
+                <Route path="/" element={
+                  <RequireAuth>
+                    <Content/>
+                  </RequireAuth>
+                }
+                />
                 <Route path="/orders" element={
-                  <RequireAuth >
-                    <Orders />
+                  <RequireAuth>
+                    <Orders/>
                   </RequireAuth>
-                } />
+                }
+                />
                 <Route path="/my_account" element={
-                  <RequireAuth >
-                    <MyAccount />
+                  <RequireAuth>
+                    <MyAccount/>
                   </RequireAuth>
-                } />
+                }
+                />
               </Routes>
               <Footer
                 currentLocale={currentLocale}

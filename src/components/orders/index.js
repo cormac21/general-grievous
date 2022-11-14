@@ -6,8 +6,7 @@ import {
 import MobileOrders from "./MobileOrders";
 import DesktopOrders from "./DesktopOrders";
 
-function Orders() {
-
+export default function Orders() {
     const theme = useTheme();
     const isMobileViewport = useMediaQuery(theme.breakpoints.down('md'));
     const [shouldShowMoreInfo, setShouldShowMoreInfo] = useState(false);
@@ -30,5 +29,3 @@ function Orders() {
     );
 
 }
-
-export default Orders;

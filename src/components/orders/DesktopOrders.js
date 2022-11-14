@@ -23,7 +23,6 @@ const previousOrders = [
 ]
 
 const DesktopOrders = (props) => {
-
     const [openNewOrderDialog, setOpenNewOrderDialog] = useState(false);
 
     const handleCloseDialog = () => {

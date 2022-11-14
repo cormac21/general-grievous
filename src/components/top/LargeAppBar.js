@@ -25,43 +25,30 @@ const LargeAppBar = () => {
           <Toolbar disableGutters>
             <Grid
               container
-              item
               direction='row'
-              alignItems='center'
-              xs={12}
             >
-              <Grid item xs={1}>
-                <NoUnderlineLink to="/">
-                  <IconButton
-                    size="large">
-                    <ExploreIcon sx={{color: '#ffffff'}}/>
-                  </IconButton>
-                </NoUnderlineLink>
-              </Grid>
               {currentUser ?
                 <Grid
                   item
                   container
-                  xs={11}
+                  alignItems='center'
+                  justifyContent='space-between'
                   mt='0'
                 >
-                  <Grid item container xs={11}>
-                    <Grid item>
-                      <NoUnderlineLink to="/orders">
-                        <Button sx={{color: 'white'}}>
-                          <FormattedMessage id="orders"/>
-                        </Button>
-                      </NoUnderlineLink>
-                    </Grid>
-                    <Grid item>
-                      <NoUnderlineLink to="/my_account">
-                        <Button sx={{color: 'white'}}>
-                          <FormattedMessage id="my_account"/>
-                        </Button>
-                      </NoUnderlineLink>
-                    </Grid>
+                  <Grid item>
+                    <IconButton
+                      size="large">
+                      <Link to="/">
+                        <ExploreIcon sx={{color: '#ffffff'}}/>
+                      </Link>
+                    </IconButton>
+                    <NoUnderlineLink to="/orders">
+                      <Button sx={{color: 'white'}}>
+                        <FormattedMessage id="orders"/>
+                      </Button>
+                    </NoUnderlineLink>
                   </Grid>
-                  <Grid item justifyContent="flex-end" xs={1}>
+                  <Grid item >
                     <Button
                       variant="contained"
                       color="secondary"
@@ -73,17 +60,26 @@ const LargeAppBar = () => {
                 </Grid>
                 :
                 <Grid
-                  item
                   container
-                  justifyContent='flex-end'
-                  xs={11}
-                  mt='0'
+                  justifyContent='space-between'
+                  xs={12}
+                  alignItems='center'
                 >
-                  <Link to="/login">
-                    <Button variant='contained' color='secondary'>
-                      <FormattedMessage id="login"/>
-                    </Button>
-                  </Link>
+                  <Grid item>
+                    <IconButton
+                      size="large">
+                      <Link to="/">
+                        <ExploreIcon sx={{color: '#ffffff'}}/>
+                      </Link>
+                    </IconButton>
+                  </Grid>
+                  <Grid item>
+                    <Link to="/signup">
+                      <Button variant='contained' color='secondary'>
+                        <FormattedMessage id="signup_yourself"/>
+                      </Button>
+                    </Link>
+                  </Grid>
                 </Grid>
               }
             </Grid>

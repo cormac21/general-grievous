@@ -29,6 +29,11 @@ export default function MobileAppBar() {
     setAnchorProfile(null);
   }
 
+  function handleMyAccountClick() {
+    navigate("/my_account")
+    setAnchorProfile(null);
+  }
+
   return (
     <AppBar position="static" color="primary">
       <Container maxWidth="xl">
@@ -70,14 +75,12 @@ export default function MobileAppBar() {
                       'aria-labelledby': 'basic-button',
                     }}
                   >
-                    <Link to="/orders" style={{textDecoration: 'none', color: '#000'}} onClick={() => setAnchorMenu(null)}>
-                      <MenuItem>
+                    <Link to="/orders" style={{textDecoration: 'none', color: '#000'}}
+                          onClick={() => setAnchorMenu(null)}>
+                      <MenuItem sx={{
+                        minWidth: 150
+                      }}>
                         <FormattedMessage id="orders"/>
-                      </MenuItem>
-                    </Link>
-                    <Link to="/my_account" style={{textDecoration: 'none', color: '#000'}} onClick={() => setAnchorMenu(null)}>
-                      <MenuItem>
-                        <FormattedMessage id="my_account"/>
                       </MenuItem>
                     </Link>
                   </Menu>
@@ -109,6 +112,9 @@ export default function MobileAppBar() {
                     open={profileOpen}
                     onClose={() => setAnchorProfile(null)}
                   >
+                    <MenuItem onClick={handleMyAccountClick}>
+                      <FormattedMessage id="my_account" />
+                    </MenuItem>
                     <MenuItem onClick={handleSignoutClick}>
                       <FormattedMessage id="signout"/>
                     </MenuItem>
@@ -125,9 +131,9 @@ export default function MobileAppBar() {
                     <FormattedMessage id="project_name"/>
                   </NoUnderlineLink>
                 </Button>
-                <Link to="/login">
+                <Link to="/signup">
                   <Button variant='contained' color='secondary'>
-                    <FormattedMessage id="login"/>
+                    <FormattedMessage id="signup_yourself"/>
                   </Button>
                 </Link>
               </Grid>
