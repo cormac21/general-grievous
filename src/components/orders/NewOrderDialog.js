@@ -17,14 +17,11 @@ const initialFormValues = {
 }
 
 const NewOrderDialog = (props) => {
-
     const {
         values,
         setValues,
         handleInputChange
     } = useForm(initialFormValues);
-
-    console.log(values);
 
     const [isBuyOrder, setIsBuyOrder] = useState(true);
     const [buyButtonVariant, setBuyButtonVariant] = useState("contained");

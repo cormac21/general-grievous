@@ -16,7 +16,7 @@ export async function authenticate(data) {
     const response = await axios.post(userEndpoint.concat("/login"), data);
     let { authorization } = response.headers;
     authorization = authorization.substring(authorization.indexOf(' ') + 1);
-    return { email: data.email, 'authorization-token': authorization};
+    return { id: data.id, email: data.email, 'authorization-token': authorization};
   } catch (err) {
     throw err;
   }

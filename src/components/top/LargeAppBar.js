@@ -12,7 +12,7 @@ import NoUnderlineLink from "../util/NoUnderlineLink";
 import {useAuth} from "../../context/AuthContext";
 import {Link, useNavigate} from "react-router-dom";
 
-const LargeAppBar = () => {
+export default function LargeAppBar() {
   const {currentUser, logout} = useAuth();
   let navigate = useNavigate();
 
@@ -89,5 +89,3 @@ const LargeAppBar = () => {
     </Container>
   );
 }
-
-export default LargeAppBar;
