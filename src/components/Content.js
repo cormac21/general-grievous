@@ -7,7 +7,7 @@ const Content = () => {
         <Typography variant="h1">
             <FormattedMessage id="landing_page_greeting" />
         </Typography>
-        <Grid container xs={12} >
+        <Grid item container xs={12} >
           <Box component="img" sx={{
             maxHeight: 450,
             maxWidth: 450,

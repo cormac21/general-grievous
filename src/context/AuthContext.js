@@ -9,15 +9,18 @@ export function useAuth() {
 
 export function AuthProvider({children}) {
   const [currentUser, setCurrentUser] = useState();
+  const [error, setError] = useState();
 
-  async function login(email, password, callback) {
-    try {
-      const userData = await authenticate({email: email, password: password});
-      setCurrentUser(userData);
-      callback();
-    } catch (err) {
-      const { status } = err.response;
-      console.log('Failed to authenticate user. Error: '.concat(status));
+  function resetError() {
+    setError({});
+  }
+
+  async function login(email, password) {
+    const result = await authenticate({email: email, password: password});
+    if ( result?.email ) {
+      setCurrentUser(result);
+    } else {
+      setError(result);
     }
   }
 
@@ -35,6 +38,8 @@ export function AuthProvider({children}) {
     setCurrentUser,
     signup,
     login,
+    error,
+    resetError,
     logout,
   }
 

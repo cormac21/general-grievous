@@ -53,7 +53,7 @@ const NewOrderDialog = (props) => {
             <FormattedMessage id="add_new_order" />
           </DialogTitle>
           <DialogContent>
-            <Grid container xs={12} mt={1}>
+            <Grid item container xs={12} mt={1}>
               <Grid item xs={8} mr={2} >
                 <TextField
                   variant="outlined"
@@ -74,7 +74,7 @@ const NewOrderDialog = (props) => {
                   />
                 </Grid>
             </Grid>
-            <Grid container xs={12} mt={2}>
+            <Grid item container xs={12} mt={2}>
               <Grid item xs={4}>
                   <TextField
                       variant="outlined"
@@ -85,14 +85,14 @@ const NewOrderDialog = (props) => {
                   />
               </Grid>
             </Grid>
-              <Grid container xs={12} mt={1}>
+              <Grid item container xs={12} mt={1}>
                 <Grid item xs={4}>
                   <Typography >
                     Valor total: { ((values.unitPrice * values.quantity) * 100 + Number.EPSILON ) /100 }
                   </Typography>
                 </Grid>
               </Grid>
-              <Grid container xs={12} spacing={1}>
+              <Grid item container xs={12} spacing={1}>
                 <Grid item xs={6} >
                   <Button variant={buyButtonVariant}
                           color="success"

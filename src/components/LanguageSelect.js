@@ -17,7 +17,7 @@ const LanguageSelect = (props) => {
               <InputLabel id="languages-label">
                 <FormattedMessage id="languages" />
               </InputLabel>
-              <Select onChange={props.handleChange} label="Languages" labelId="languages-label">
+              <Select onChange={props.handleChange} label="Languages" labelId="languages-label" defaultValue={languages[0].code}>
                 <MenuItem value={languages[0].code}>{languages[0].name}</MenuItem>
                 <MenuItem value={languages[1].code}>{languages[1].name}</MenuItem>
                 <MenuItem value={languages[2].code}>{languages[2].name}</MenuItem>

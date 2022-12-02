@@ -13,11 +13,12 @@ export async function createNewUser(data) {
 
 export async function authenticate(data) {
   try {
-    const response = await axios.post(userEndpoint.concat("/login"), data);
-    let { authorization } = response.headers;
+    const result = await axios.post(userEndpoint.concat("/login"), data);
+    let { authorization } = result.headers;
     authorization = authorization.substring(authorization.indexOf(' ') + 1);
-    return { id: data.id, email: data.email, 'authorization-token': authorization};
+    const {id, email, username} = result.data;
+    return { id, email, username, 'authorization-token': authorization};
   } catch (err) {
-    throw err;
+    return {status: err.response.status, error: err.message};
   }
 }

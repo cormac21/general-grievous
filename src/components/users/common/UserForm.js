@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import {Form, useForm} from "../../../form/useForm";
+import {Form} from "../../../form/useForm";
 import {Alert, Box, Collapse, Grid, IconButton} from "@mui/material";
 import Input from "../../controls/Input";
 import MuiButton from "../../controls/MuiButton";
@@ -14,42 +14,37 @@ const initialValues = {
 
 function UserForm(props) {
   const { buttonMessageId, isLogin = false } = props;
-  const {
-    values,
-    errors,
-    setErrors,
-    handleInputChange
-  } = useForm(initialValues);
+  const [values, setValues] = useState(initialValues);
+  const [validationErrors, setValidationErrors] = useState();
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
   let location = useLocation()
   let navigate = useNavigate()
   let from = location.state?.from?.pathname || "/";
 
-  const { signup, login } = useAuth();
+  const { signup, login, error } = useAuth();
 
   const validate = () => {
     let temp = {};
     temp.email = (/^[^\s@]+@[^\s@]+\.[^\s@]+$/).test(values.email) ? "" : "This doesn't seem right"
     //password validation goes here
-    setErrors({
+    setValidationErrors({
       ...temp
     })
     return Object.values(temp).every( x => x === "");
   }
 
-  function handleLoginSubmit (e) {
+  async function handleLoginSubmit (e) {
     e.preventDefault();
     if (validate()) {
-      setErrors({});
+      setValidationErrors({});
       setLoading(true);
-      try {
-        login(values.email, values.password, () => {
-          navigate(from, { replace: true });
-        });
-      } catch (err) {
-        setErrorMessage('Algo deu errado ao fazer login!')
-        console.log(err)
+
+      await login(values.email, values.password);
+      if(error) {
+        setErrorMessage('Credenciais inválidas! Verifique-as e tente novamente.')
+      } else {
+        navigate(from, { replace: true });
       }
       setLoading(false);
     }
@@ -58,7 +53,7 @@ function UserForm(props) {
   function handleSignupSubmit (e) {
     e.preventDefault();
     if (validate()) {
-      setErrors({});
+      setValidationErrors({});
       setLoading(true)
       try {
         signup(values.email, values.password);
@@ -100,9 +95,9 @@ function UserForm(props) {
             label="Email"
             value={values.email}
             autoComplete="off"
-            onChange={handleInputChange}
-            error={Object.prototype.hasOwnProperty.call('email', errors)}
-            helperText={errors.email}
+            onChange={(e) => setValues({...values, email: e.target.value})}
+            error={validationErrors.email !== undefined}
+            helperText={validationErrors?.email}
           />
         </Grid>
         <Grid item xs={12}>
@@ -114,9 +109,9 @@ function UserForm(props) {
             type="password"
             autoComplete="new-password"
             value={values.password}
-            onChange={handleInputChange}
-            error={Object.prototype.hasOwnProperty.call('password', errors)}
-            helperText={errors.password}
+            onChange={(e) => setValues({...values, password: e.target.value})}
+            error={Object.prototype.hasOwnProperty.call('password', validationErrors)}
+            helperText={validationErrors?.password}
           />
         </Grid>
         <Grid item xs={12} mt={2} >

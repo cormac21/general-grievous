@@ -60,6 +60,7 @@ export default function LargeAppBar() {
                 </Grid>
                 :
                 <Grid
+                  item
                   container
                   justifyContent='space-between'
                   xs={12}

@@ -39,6 +39,7 @@ export default function MobileAppBar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Grid
+            item
             container
             direction='row'
             alignItems='center'
