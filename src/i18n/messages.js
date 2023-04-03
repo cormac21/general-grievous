@@ -3,7 +3,7 @@ import { LOCALES } from "./locales";
 export const messages = {
     [LOCALES.ENGLISH]: {
         project_name: "Timon and Pumbaa",
-        landing_page_greeting: "Hello, let's learn how to use React-Intl",
+        landing_page_greeting: "Welcome to Timón and Pumbaa!",
         price_display: "How {n, number, ::currency/USD} is displayed in your selected language",
         number_display: "This is how {n, number} is formatted in the selected locale",
         start_today: "Start Today: {d, date}",
@@ -12,6 +12,22 @@ export const messages = {
         click_count: "You clicked {count, plural, one {# time} other {# times}}",
         languages: "Languages ",
         footer_credits: "Developed by: Lucas D. Gaio",
+        orders_more_info: "In this page, you can create Buy/Sell Orders",
+        add_new_order: "New Order",
+        submit: "Submit",
+        ticker: "Ticker",
+        quantity: "Quantity",
+        order_type: "Type",
+        unit_price: "Unit Price",
+        total_price: "Total Price",
+        buy_button: "Buy",
+        sell_button: "Sell",
+        signup: "Signup",
+        signout: "Exit",
+        signup_yourself: "Sign up",
+        already_signedup: "Already have an account? Login here",
+        login: "Login",
+        no_account_yet: "Don't have an account? Signup here"
     },
     [LOCALES.PORTUGUESE]: {
         project_name: "Timão e Pumba",

@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import {Form} from "../../../form/useForm";
 import {Alert, Box, Collapse, Grid, IconButton} from "@mui/material";
-import Input from "../../controls/Input";
 import MuiButton from "../../controls/MuiButton";
+import Input from "../../controls/Input";
 import {useAuth} from "../../../context/AuthContext";
 import CloseIcon from '@mui/icons-material/Close';
 import {useLocation, useNavigate} from 'react-router-dom';
@@ -96,7 +96,7 @@ function UserForm(props) {
             value={values.email}
             autoComplete="off"
             onChange={(e) => setValues({...values, email: e.target.value})}
-            error={validationErrors.email !== undefined}
+            error={validationErrors?.email}
             helperText={validationErrors?.email}
           />
         </Grid>
